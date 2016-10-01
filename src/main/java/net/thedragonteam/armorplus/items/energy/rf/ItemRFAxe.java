@@ -123,6 +123,7 @@ public class ItemRFAxe extends BaseRFAxe {
     }
 
     //tj's code
+    @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
         if(!worldIn.isRemote()){
