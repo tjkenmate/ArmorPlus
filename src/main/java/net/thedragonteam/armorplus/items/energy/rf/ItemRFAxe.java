@@ -37,6 +37,7 @@ public class ItemRFAxe extends BaseRFAxe {
             Blocks.ACACIA_FENCE_GATE, Blocks.BIRCH_FENCE_GATE, Blocks.DARK_OAK_FENCE_GATE, Blocks.JUNGLE_FENCE_GATE, Blocks.OAK_FENCE_GATE, Blocks.SPRUCE_FENCE_GATE, Blocks.LEAVES,
             Blocks.LEAVES2, Blocks.BOOKSHELF, Blocks.CHORUS_FLOWER, Blocks.CHORUS_PLANT, Blocks.NOTEBLOCK, Blocks.PUMPKIN, Blocks.MELON_BLOCK, Blocks.PLANKS, Blocks.WOODEN_PRESSURE_PLATE,
             Blocks.ACACIA_STAIRS, Blocks.BIRCH_STAIRS, Blocks.SPRUCE_STAIRS, Blocks.DARK_OAK_STAIRS, Blocks.JUNGLE_STAIRS, Blocks.OAK_STAIRS);
+    private boolean isInitalsed = false;
 
     public ItemRFAxe() {
         super(ToolMaterial.DIAMOND, "redstone_flux_axe", EFFECTIVE_ON, maxCapacityAxe, inputAxe, outputAxe);
@@ -119,6 +120,15 @@ public class ItemRFAxe extends BaseRFAxe {
         }
 
         return maxCapacityAxe;
+    }
+
+    //tj's code
+    public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+        super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
+        if(!isInitalsed) {
+            this.receiveEnergy(stack, 350, false);
+            this.isInitalsed = true;
+        }
     }
 
     private void createTooltip(ItemStack stack, List<String> tooltip) {
