@@ -125,9 +125,11 @@ public class ItemRFAxe extends BaseRFAxe {
     //tj's code
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
-        if(!isInitalsed) {
-            this.receiveEnergy(stack, 350, false);
-            this.isInitalsed = true;
+        if(!worldIn.isRemote()){
+            if(!isInitalsed) {
+                this.receiveEnergy(stack, 350, false);
+                this.isInitalsed = true;
+            }
         }
     }
 
